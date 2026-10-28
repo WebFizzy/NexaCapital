@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Nexa Capital digital investment platform frontend demo."
+    />
+    <title>About | Nexa Capital</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons & FontAwesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --nexa-navy-dark: #0b132b;
+        --nexa-navy-light: #1c2541;
+        --nexa-gold: #c5a059;
+        --nexa-gold-hover: #d4af37;
+        --nexa-surface: #f8f9fa;
+        --nexa-border: rgba(197, 160, 89, 0.2);
+      }
+
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background-color: var(--nexa-navy-dark);
+        color: #e2e8f0;
+        overflow-x: hidden;
+      }
+
+      /* Custom Institutional Theme Styling */
+      .badge-luxury {
+        background: rgba(197, 160, 89, 0.15);
+        color: var(--nexa-gold);
+        border: 1px solid var(--nexa-border);
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 0.5rem 1rem;
+        border-radius: 50rem;
+        font-size: 0.75rem;
+      }
+
+      .hero-gradient {
+        background: linear-gradient(135deg, #0b132b 0%, #1c2541 100%);
+        position: relative;
+      }
+
+      .hero-gradient::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: radial-gradient(
+          rgba(197, 160, 89, 0.08) 1px,
+          transparent 1px
+        );
+        background-size: 32px 32px;
+        pointer-events: none;
+      }
+
+      .custom-card {
+        background: #ffffff;
+        color: #0b132b;
+        border-radius: 1rem;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .custom-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.15) !important;
+      }
+
+      .btn-gold {
+        background-color: var(--nexa-gold);
+        color: #0b132b;
+        font-weight: 600;
+        border: none;
+        transition: all 0.3s ease;
+      }
+
+      .btn-gold:hover {
+        background-color: var(--nexa-gold-hover);
+        color: #0b132b;
+        transform: translateY(-2px);
+      }
+
+      /* Floating Activity Toast Widget */
+      .live-activity-toast {
+        position: fixed;
+        bottom: 25px;
+        left: 25px;
+        z-index: 1080;
+        background: rgba(11, 19, 43, 0.95);
+        backdrop-filter: blur(12px);
+        border: 1px solid var(--nexa-border);
+        color: #fff;
+        padding: 0.85rem 1.25rem;
+        border-radius: 0.75rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        max-width: 340px;
+        animation: slideInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      @keyframes slideInUp {
+        from {
+          transform: translateY(120%);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .pulse-dot {
+        height: 9px;
+        width: 9px;
+        background-color: #10b981;
+        border-radius: 50%;
+        display: inline-block;
+        box-shadow: 0 0 0 rgba(16, 185, 129, 0.4);
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
+        }
+        70% {
+          box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+        }
+      }
+    </style>
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="container">
+        <span
+          ><strong>DEMO ENVIRONMENT</strong> · Prices and portfolio figures are
+          illustrative.</span
+        ><button
+          data-dismiss
+          aria-label="Dismiss notice"
+          style="background: none; border: 0; color: #b9c6d7"
+        >
+          ×
+        </button>
+      </div>
+    </div>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html"
+          ><span class="mark">N</span
+          ><span
+            >NEXA CAPITAL<small>DIGITAL INVESTMENT PLATFORM</small></span
+          ></a
+        >
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="index.html">Home</a><a href="about.html">About</a
+          ><a href="plans.html">Investment Plans</a><a href="faq.html">FAQs</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="nav-login" href="login.html">Log in</a
+          ><a class="btn primary smallbtn" href="register.html">Get Started ↗</a
+          ><button
+            class="menu-toggle"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+          >
+            ☰
+          </button>
+        </div>
+      </div>
+    </header>
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumb">Home / About</div>
+        <span class="eyebrow">Nexa Capital · Demo concept</span>
+        <h1>A clearer way to explore connected markets.</h1>
+        <p>
+          Nexa Capital is an original design concept for a modern digital
+          investment interface, focused on clear information architecture,
+          accessible interactions, and transparent expectations.
+        </p>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- NEXA CAPITAL: ABOUT PAGE BODY SECTION      -->
+    <!-- ========================================== -->
+    <main>
+      <!-- Section 1: About Hero (Institutional Purpose) -->
+
+      <!-- <section class="hero-gradient py-5 py-lg-7 text-white position-relative overflow-hidden" style="padding-top: 6rem; padding-bottom: 6rem;">
+            <div class="container position-relative z-2">
+                <div class="row justify-content-center text-center">
+                    <div class="col-lg-9 col-xl-8">
+                        <div class="mb-3">
+                            <span class="badge-luxury">Institutional Heritage & Vision</span>
+                        </div>
+                        <h1 class="display-4 display-lg-3 fw-extrabold mb-4 tracking-tight" style="letter-spacing: -0.02em;">
+                            A clearer way to explore connected markets.
+                        </h1>
+                        <p class="lead text-light opacity-85 fw-light mb-0 mx-auto" style="max-width: 720px; font-size: 1.15rem; line-height: 1.7;">
+                            Nexa Capital bridges sophisticated technological architecture with disciplined multi-asset strategies, turning complex global opportunities into resilient, generational wealth for institutional syndicates and private wealth clients.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+      <!-- Section 2: Mission, Vision & Strategic Core (Who We Are) -->
+      <section
+        class="py-5 py-lg-7 bg-white text-dark"
+        style="padding-top: 6rem; padding-bottom: 6rem"
+      >
+        <div class="container">
+          <div class="row g-5 align-items-center">
+            <!-- Left Column -->
+            <div class="col-lg-6">
+              <div class="mb-3">
+                <span
+                  class="text-uppercase fw-bold text-muted small tracking-widest"
+                  style="color: var(--nexa-gold) !important"
+                  >Who We Are</span
+                >
+              </div>
+              <h2
+                class="fw-bold display-6 mb-4 text-dark"
+                style="letter-spacing: -0.01em"
+              >
+                Architecting The Future of Global Wealth Management
+              </h2>
+              <p class="text-secondary mb-4 leading-relaxed">
+                We specialize in the democratization of private equity, venture
+                capital, and structured credit products previously restricted
+                exclusively to elite institutional funds. By leveraging advanced
+                analytics and rigorous risk models, we unlock secure,
+                transparent financial avenues.
+              </p>
+
+              <div class="row g-4 mt-2">
+                <div class="col-sm-6">
+                  <div
+                    class="p-4 bg-light rounded-4 h-100 border border-light-subtle"
+                  >
+                    <div class="text-gold mb-2" style="color: var(--nexa-gold)">
+                      <i class="fa-solid fa-bullseye fs-4"></i>
+                    </div>
+                    <h5 class="fw-bold h6 mb-2 text-dark">Our Mission</h5>
+                    <p class="text-muted small mb-0">
+                      Empowering investors with institutional-grade tools while
+                      ensuring rigorous risk-adjusted capital preservation.
+                    </p>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div
+                    class="p-4 bg-light rounded-4 h-100 border border-light-subtle"
+                  >
+                    <div class="text-gold mb-2" style="color: var(--nexa-gold)">
+                      <i class="fa-solid fa-eye fs-4"></i>
+                    </div>
+                    <h5 class="fw-bold h6 mb-2 text-dark">Our Vision</h5>
+                    <p class="text-muted small mb-0">
+                      A transparent global financial ecosystem where
+                      cross-border asset allocation is frictionless and secure.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Visual Container -->
+            <div class="col-lg-6">
+              <div class="position-relative">
+                <img
+                  src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop"
+                  alt="Institutional Architecture & Markets"
+                  class="img-fluid rounded-4 shadow-lg w-100"
+                  style="object-fit: cover; height: 440px"
+                />
+
+                <!-- Floating Compliance Badge Overlay -->
+                <div
+                  class="position-absolute bottom-0 start-0 m-4 p-3 bg-dark text-white rounded-3 shadow-lg border border-secondary border-opacity-25 d-flex align-items-center gap-3"
+                  style="
+                    backdrop-filter: blur(8px);
+                    background: rgba(11, 19, 43, 0.9) !important;
+                  "
+                >
+                  <div class="fs-3 text-warning">
+                    <i class="bi bi-shield-check"></i>
+                  </div>
+                  <div>
+                    <div class="fw-bold small">Regulated & Compliant</div>
+                    <div class="text-muted small" style="font-size: 0.75rem">
+                      Global Custody Partnerships
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Core Pillars / Nexa Standard -->
+      <section
+        class="py-5 py-lg-7"
+        style="
+          background-color: #0e172f;
+          padding-top: 6rem;
+          padding-bottom: 6rem;
+        "
+      >
+        <div class="container">
+          <div class="text-center mx-auto mb-5" style="max-width: 650px">
+            <span class="badge-luxury mb-2 d-inline-block">Core Pillars</span>
+            <h2 class="fw-bold display-6 text-white mb-3">
+              The Nexa Capital Standard
+            </h2>
+            <p class="text-light opacity-75">
+              How we safeguard your capital and optimize institutional yields
+              across volatile market cycles.
+            </p>
+          </div>
+
+          <div class="row g-4">
+            <!-- Pillar 1 -->
+            <div class="col-md-4">
+              <div
+                class="custom-card p-4 h-100 shadow-sm border-0 d-flex flex-column justify-content-between"
+              >
+                <div>
+                  <div class="mb-3 text-warning fs-3">
+                    <i class="bi bi-shield-lock-fill"></i>
+                  </div>
+                  <h4 class="h5 fw-bold text-dark mb-3">
+                    1. Institutional-Grade Security
+                  </h4>
+                  <p class="text-secondary small mb-4">
+                    Secured by multi-tier asset custody, segregated accounts,
+                    and comprehensive institutional risk oversight models.
+                  </p>
+                </div>
+                <div class="pt-3 border-top border-light">
+                  <span
+                    class="text-dark fw-bold small d-flex align-items-center gap-1"
+                    >Zero-Trust Infrastructure
+                    <i class="bi bi-arrow-right ms-auto text-muted"></i
+                  ></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pillar 2 -->
+            <div class="col-md-4">
+              <div
+                class="custom-card p-4 h-100 shadow-sm border-0 d-flex flex-column justify-content-between"
+              >
+                <div>
+                  <div class="mb-3 text-warning fs-3">
+                    <i class="bi bi-cpu-fill"></i>
+                  </div>
+                  <h4 class="h5 fw-bold text-dark mb-3">
+                    2. Real-Time Intelligence
+                  </h4>
+                  <p class="text-secondary small mb-4">
+                    Advanced portfolio tracking engines monitoring yields,
+                    dynamic asset valuations, and scheduled distributions down
+                    to the second.
+                  </p>
+                </div>
+                <div class="pt-3 border-top border-light">
+                  <span
+                    class="text-dark fw-bold small d-flex align-items-center gap-1"
+                    >Sub-second Analytics
+                    <i class="bi bi-arrow-right ms-auto text-muted"></i
+                  ></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pillar 3 -->
+            <div class="col-md-4">
+              <div
+                class="custom-card p-4 h-100 shadow-sm border-0 d-flex flex-column justify-content-between"
+              >
+                <div>
+                  <div class="mb-3 text-warning fs-3">
+                    <i class="bi bi-sliders"></i>
+                  </div>
+                  <h4 class="h5 fw-bold text-dark mb-3">
+                    3. Frictionless Liquidity Rails
+                  </h4>
+                  <p class="text-secondary small mb-4">
+                    Seamless multi-currency and digital asset settlement
+                    infrastructure built for rapid cross-border transaction
+                    verification.
+                  </p>
+                </div>
+                <div class="pt-3 border-top border-light">
+                  <span
+                    class="text-dark fw-bold small d-flex align-items-center gap-1"
+                    >Global Settlement Rails
+                    <i class="bi bi-arrow-right ms-auto text-muted"></i
+                  ></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Call to Action (CTA) Banner -->
+      <section
+        class="py-5 py-lg-6"
+        style="
+          background: linear-gradient(135deg, #1c2541 0%, #0b132b 100%);
+          border-top: 1px solid rgba(197, 160, 89, 0.15);
+        "
+      >
+        <div class="container text-center py-4">
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <span class="badge-luxury mb-3 d-inline-block"
+                >Beyond Standard Returns</span
+              >
+              <h2 class="fw-bold display-6 text-white mb-3">
+                Secure Your Legacy. Empower Tomorrow's Portfolio.
+              </h2>
+              <p
+                class="text-light opacity-75 mb-4 mx-auto"
+                style="max-width: 600px"
+              >
+                Connect with our wealth advisors or deploy capital into
+                structured institutional strategies today.
+              </p>
+              <a
+                href="#"
+                class="btn btn-gold btn-lg px-5 py-3 rounded-pill text-dark shadow"
+              >
+                Explore Portfolios &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- <main>
+      <section class="section">
+        <div class="container content-grid">
+          <article class="card reveal">
+            <div class="icon">◇</div>
+            <h2>Our design principle</h2>
+            <p>
+              Financial interfaces should help people understand information
+              without unnecessary complexity, pressure tactics, or unsupported
+              claims.
+            </p>
+          </article>
+          <article class="card reveal">
+            <div class="icon">⌁</div>
+            <h2>What this demo is</h2>
+            <p>
+              A multi-page frontend prototype built with HTML, CSS, and
+              JavaScript. All financial data and product plans are fictional
+              examples.
+            </p>
+          </article>
+        </div>
+      </section>
+
+
+
+      <section class="section" style="padding-top: 0">
+        <div class="container">
+          <div class="notice">
+            This is not a real investment firm and does not provide financial,
+            brokerage, custody, or investment management services. Replace this
+            concept content with verified company information before any public
+            launch.
+          </div>
+        </div>
+      </section>
+    </main> -->
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a class="brand" href="index.html"
+              ><span class="mark">N</span
+              ><span
+                >NEXA CAPITAL<small>DIGITAL INVESTMENT PLATFORM</small></span
+              ></a
+            >
+            <p>
+              An original frontend concept exploring a connected way to view
+              digital assets and investment categories.
+            </p>
+            <span class="tag">Demo only · Not a financial service</span>
+          </div>
+          <div>
+            <h4>PLATFORM</h4>
+            <div class="footer-links">
+              <a href="index.html#features">Features</a
+              ><a href="plans.html">Plans</a
+              ><a href="index.html#assets">Asset categories</a
+              ><a href="dashboard.html">Demo dashboard</a>
+            </div>
+          </div>
+          <div>
+            <h4>COMPANY</h4>
+            <div class="footer-links">
+              <a href="about.html">About</a
+              ><a href="index.html#how">How it works</a
+              ><a href="faq.html">FAQs</a><a href="contact.html">Contact</a>
+            </div>
+          </div>
+          <div>
+            <h4>INFORMATION</h4>
+            <div class="footer-links">
+              <a href="privacy.html">Privacy</a
+              ><a href="terms.html">Terms & risks</a
+              ><a href="login.html">Log in</a
+              ><a href="register.html">Demo registration</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="risk-note">
+          Nexa Capital is a fictional frontend demonstration. No brokerage,
+          investment management, custody, wallet, deposit, withdrawal, or
+          trading services are provided. All prices, balances, plans, and charts
+          are illustrative and are not financial advice or offers to invest.
+        </div> -->
+        <div class="footer-bottom">
+          <span>© 2026 Nexa Capital</span
+          >
+          <!-- <span>Designed for clarity. Built for demonstration.</span> -->
+        </div>
+      </div>
+    </footer>
+    <div class="toast-region" aria-live="polite"></div>
+    <script src="js/main.js"></script>
+  </body>
+</html>
